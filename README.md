@@ -31,3 +31,20 @@ analysis.
 Once the image-to-image transform is known, the same mapping is applied to the
 spatial barcode coordinates (e.g. Visium spots or Stereo-seq bins), yielding a
 unified image-plus-expression coordinate frame.
+
+## Difficulty index
+
+Registration scenarios ranked by a 1–5 ★ difficulty index. The index combines
+four factors: **modality gap**, **deformation type**, **resolution gap**, and
+**tissue artifacts** (folds, tears, bubbles).
+
+| Scenario | Transform typically needed | Difficulty |
+| --- | --- | --- |
+| Same modality, same section re-imaged | rigid | ★ |
+| Same modality, serial sections | affine | ★★ |
+| Cross-scale (low-res overview ↔ high-res tiles) | affine + pyramid | ★★★ |
+| Cross-modality (H&E ↔ fluorescence / IF) | affine + intensity metrics (MI) | ★★★★ |
+| Cross-modality + deformable (FFPE vs fresh-frozen, torn or folded tissue) | non-rigid (TPS / deformation field) | ★★★★★ |
+
+Rule of thumb: every additional factor beyond a plain rigid, same-modality
+alignment adds roughly one ★.
