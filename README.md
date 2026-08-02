@@ -48,3 +48,32 @@ four factors: **modality gap**, **deformation type**, **resolution gap**, and
 
 Rule of thumb: every additional factor beyond a plain rigid, same-modality
 alignment adds roughly one ★.
+
+## Why alignment matters
+
+Registration puts molecular measurements back into their morphological
+context. Without a shared coordinate frame, expression data and tissue images
+remain parallel descriptions of the same sample; with one, every spot or cell
+inherits both a molecular profile and a histological identity.
+
+### Value
+
+- **Morphological grounding** — annotate expression clusters with the tissue
+  structures they actually occupy (tumor vs. stroma vs. immune infiltrate).
+- **Multimodal integration** — combine transcriptomics, proteomics, and
+  histology of the same or adjacent sections into one joint analysis.
+- **3D reconstruction** — stack registered serial sections into volumetric
+  tissue atlases.
+- **Quality control** — verify that barcoded spots truly overlap the tissue
+  and flag folds, tears, or off-tissue capture areas.
+
+### Applications
+
+- Mapping Visium / Stereo-seq barcode coordinates onto H&E or
+  immunofluorescence images of the same section.
+- Aligning consecutive sections assayed with different modalities
+  (transcriptome on one, multiplex IF or proteomics on the next).
+- Building cross-sample and cross-cohort spatial atlases for biomarker
+  discovery.
+- Computational pathology: aligning whole-slide images across stains for
+  weakly supervised learning and label transfer.
