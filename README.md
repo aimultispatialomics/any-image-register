@@ -77,3 +77,41 @@ inherits both a molecular profile and a histological identity.
   discovery.
 - Computational pathology: aligning whole-slide images across stains for
   weakly supervised learning and label transfer.
+
+
+## The `register` package
+
+The repository ships a numpy-only reference implementation of the
+pipeline described above:
+
+| Module | Contents |
+| --- | --- |
+| `register.io` | image loading and grayscale conversion |
+| `register.preprocess` | intensity normalisation, Gaussian smoothing |
+| `register.pyramid` | Gaussian image pyramid for coarse-to-fine alignment |
+| `register.metrics` | NCC and mutual information similarity |
+| `register.metrics_fast` | vectorised shift-grid search (performance path) |
+| `register.pyramid_cache` | LRU-cached pyramid construction |
+| `register.transforms` | rigid (Kabsch) and affine least-squares estimation |
+| `register.ransac` | RANSAC outlier rejection for correspondences |
+| `register.warp` | bilinear image warping into fixed space |
+| `register.coords` | spatial barcode / spot coordinate mapping |
+| `register.evaluate` | landmark TRE and Dice overlap evaluation |
+| `register.difficulty` | the difficulty index as executable code |
+| `register.cli` | command-line entry points |
+
+### Quickstart
+
+```python
+import numpy as np
+from register.metrics import ncc
+from register.ransac import ransac_affine
+from register.warp import warp_image
+
+# src/dst: matched keypoint coordinates from your favourite detector
+matrix, inliers = ransac_affine(src, dst, threshold=3.0)
+aligned = warp_image(moving_img, matrix, output_shape=fixed_img.shape)
+print("NCC after alignment:", ncc(fixed_img, aligned))
+```
+
+Run the tests with `python -m pytest tests/`.
