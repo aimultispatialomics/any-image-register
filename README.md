@@ -104,8 +104,11 @@ pipeline described above:
 
 ```python
 import numpy as np
+
 from register.metrics import ncc
+
 from register.ransac import ransac_affine
+
 from register.warp import warp_image
 
 # src/dst: matched keypoint coordinates from your favourite detector
