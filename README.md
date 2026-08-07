@@ -111,7 +111,8 @@ from register.warp import warp_image
 # src/dst: matched keypoint coordinates from your favourite detector
 matrix, inliers = ransac_affine(src, dst, threshold=3.0)
 aligned = warp_image(moving_img, matrix, output_shape=fixed_img.shape)
-print("NCC after alignment:", ncc(fixed_img, aligned)).
+print("NCC after alignment:", ncc(fixed_img, aligned))
+...
 ```
 
 Run the tests with `python -m pytest tests/`.
