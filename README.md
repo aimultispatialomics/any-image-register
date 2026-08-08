@@ -2,6 +2,7 @@
 spatial image register
 
 ## Principles
+test2
 
 `any-image-register` aligns spatial omics images from different sources,
 modalities, or resolutions into a common coordinate space, so that spatial
