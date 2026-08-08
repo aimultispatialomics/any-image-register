@@ -2,8 +2,7 @@
 spatial image register
 
 ## Principles
-feature-pro
-all
+feature-pro2
 
 `any-image-register` aligns spatial omics images from different sources,
 modalities, or resolutions into a common coordinate space, so that spatial
