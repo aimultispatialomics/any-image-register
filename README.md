@@ -103,6 +103,7 @@ pipeline described above:
 ### Quickstart
 
 ```python
+
 import numpy as np
 from register.metrics import ncc
 from register.ransac import ransac_affine
